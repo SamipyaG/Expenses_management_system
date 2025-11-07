@@ -4,27 +4,27 @@ const User=require('../model/userModel')
 
 const login =async(req,res)=>{
 try{
-    const {emailpassword}= req.body
+    const {email,password}= req.body
     const user=await User.findOne({email,password})
 
     if(!user){
         res.status(200).json({
-            message:"The user doesnot exist ",
+            message:"The user does not exist",
             success:false
-
         })
-        }
-        res.status(200).json({
-            message:"User logged in succssfuly"
-            ,
-            success:true,
-            user
-        })
+        return
+    }
+    res.status(200).json({
+        message:"User logged in successfully",
+        success:true,
+        user
+    })
 }catch(error){
+    console.log("Login error:", error)
     res.status(500).json({
-        message:"error in loggin in ",
+        message:"error in logging in",
         success:false,
-        error
+        error: error.message
     })
 }
 }
@@ -33,7 +33,7 @@ try{
 const register=async(req,res)=>{
     try{
         const newUser=new User(req.body)
-        newUser.save()
+        await newUser.save()
         res.status(201).json({
             message:"user created successfully",
             success:true,
@@ -41,10 +41,11 @@ const register=async(req,res)=>{
         })
 
     }catch(error){
+        console.log("Registration error:", error)
         res.status(500).json({
             message:"An error in registration",
             success:false,
-            error
+            error: error.message
         })
     }
     
