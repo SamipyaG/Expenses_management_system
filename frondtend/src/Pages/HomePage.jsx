@@ -4,8 +4,16 @@ import Layout from '../Component/Layout/Layout'
 const HomePage = () => {
   return (
     <Layout>
-        <h1>this is home page</h1>
+        <div className="filters">
+        <div>range filter</div>
+        <div>
+          <button className='btn btn-primary'>Add new</button>
+        </div>
+        </div>
 
+
+
+        <div className="content"></div>
     </Layout>
   )
 }
