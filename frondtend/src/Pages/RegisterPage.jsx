@@ -22,16 +22,14 @@ const RegisterPage = () => {
             setLoading(false)
             message.error("Something went wrong please try again later")
         }
-        //prevent for login user
-        useEffect(()=>{
-            if(localStorage.getItem('user'))
-            {
-                navigate("/")
-            }
-        },[navigate])
-
-
     }
+    //prevent for login user
+    useEffect(()=>{
+        if(localStorage.getItem('user'))
+        {
+            navigate("/")
+        }
+    },[navigate])
   return (
 <>
 <div className='register-page'>
@@ -61,8 +59,8 @@ const RegisterPage = () => {
 </div>
 
 
-</>
-)
+ </>
+ )
 }
 
 export default RegisterPage
