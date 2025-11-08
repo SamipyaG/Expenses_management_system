@@ -21,8 +21,8 @@ app.use(morgan('dev'))
 
 // user routes
 app.use('/api/users',require('./routes/userRoutes'))
-
-app.use('/api/transection',require("./routes/transectionRoutes"))
+//transections routes
+app.use('/api/transection',require('./routes/transectionRoutes'))
 
 
 //listning server

@@ -1,27 +1,36 @@
 const mongoose=require('mongoose')
 
 const transactionSchema=mongoose.Schema({
+    userid:{
+        type:String,
+        required:true,
+    },
     amount:{
         type:Number,
-        require:[true,"the amount is required"]
+        required:[true,"the amount is required"]
+
+    },
+    type:{
+        type:String,
+        required:[true,"type is require"]
 
     },
     category:{
         type:String,
-        require:[true,"Catagory is require"]
+        required:[true,"Catagory is require"]
 
     },
     refrence:{
         type:String,
-        require:[true,"Catagory is require"]
+        required:[true,"refrence is require"]
     },
     description:{
         type:String,
-        require:[true,"Catagory is require"]
+        required:[true,"description is require"]
     },
     date:{
-         type:String,
-         require:[true,"Catagory is require"]
+         type:Date,
+         required:[true,"date is require"]
     }},{timestamps:true}
 )
 const transaction=mongoose.model('transaction',transactionSchema)
